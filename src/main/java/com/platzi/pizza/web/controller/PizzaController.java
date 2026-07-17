@@ -4,8 +4,12 @@ import com.platzi.pizza.persistence.entity.PizzaEntity;
 import com.platzi.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +33,27 @@ public class PizzaController {
     @GetMapping("/{idPizza}")
     public ResponseEntity<PizzaEntity> get(@PathVariable int idPizza){
         return ResponseEntity.ok(this.pizzaService.get(idPizza));
+    }
+
+    @PostMapping
+    public ResponseEntity<PizzaEntity> save(@RequestBody PizzaEntity pizza){
+        return ResponseEntity.ok(this.pizzaService.save(pizza));
+    }
+
+    @PutMapping("/{idPizza}")
+    public ResponseEntity<PizzaEntity> update(
+            @PathVariable int idPizza,
+            @RequestBody PizzaEntity pizza){
+
+        return ResponseEntity.ok(this.pizzaService.update(idPizza, pizza));
+    }
+
+    @DeleteMapping("/{idPizza}")
+    public ResponseEntity<Void> delete(@PathVariable int idPizza){
+
+        this.pizzaService.delete(idPizza);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

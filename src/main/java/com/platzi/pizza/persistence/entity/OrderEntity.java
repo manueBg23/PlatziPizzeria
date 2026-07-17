@@ -2,9 +2,6 @@ package com.platzi.pizza.persistence.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Entity
 @Table(name = "pizza_order")
 public class OrderEntity {
