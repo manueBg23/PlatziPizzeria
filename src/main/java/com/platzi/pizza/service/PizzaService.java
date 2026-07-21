@@ -1,6 +1,6 @@
 package com.platzi.pizza.service;
 
-import com.platzi.pizza.persistence.entity.PizzaEntity;
+import com.platzi.pizza.persistence.entity.Pizza;
 import com.platzi.pizza.persistence.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,21 +16,21 @@ public class PizzaService {
         this.pizzaRepository = pizzaRepository;
     }
 
-    public List<PizzaEntity> getAll(){
+    public List<Pizza> getAll(){
         return this.pizzaRepository.findAll();
     }
 
-    public PizzaEntity get(int idPizza){
+    public Pizza get(int idPizza){
         return this.pizzaRepository.findById(idPizza).orElse(null);
     }
 
-    public PizzaEntity save(PizzaEntity pizza){
+    public Pizza save(Pizza pizza){
         return pizzaRepository.save(pizza);
     }
 
-    public PizzaEntity update(int idPizza, PizzaEntity pizza){
+    public Pizza update(int idPizza, Pizza pizza){
 
-        PizzaEntity pizzaActual = this.get(idPizza);
+        Pizza pizzaActual = this.get(idPizza);
 
         if(pizzaActual == null){
             return null;

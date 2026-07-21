@@ -1,6 +1,6 @@
 package com.platzi.pizza.web.controller;
 
-import com.platzi.pizza.persistence.entity.PizzaEntity;
+import com.platzi.pizza.persistence.entity.Pizza;
 import com.platzi.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,24 +26,24 @@ public class PizzaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PizzaEntity>> getAll(){
+    public ResponseEntity<List<Pizza>> getAll(){
         return ResponseEntity.ok(this.pizzaService.getAll());
     }
 
     @GetMapping("/{idPizza}")
-    public ResponseEntity<PizzaEntity> get(@PathVariable int idPizza){
+    public ResponseEntity<Pizza> get(@PathVariable int idPizza){
         return ResponseEntity.ok(this.pizzaService.get(idPizza));
     }
 
     @PostMapping
-    public ResponseEntity<PizzaEntity> save(@RequestBody PizzaEntity pizza){
+    public ResponseEntity<Pizza> save(@RequestBody Pizza pizza){
         return ResponseEntity.ok(this.pizzaService.save(pizza));
     }
 
     @PutMapping("/{idPizza}")
-    public ResponseEntity<PizzaEntity> update(
+    public ResponseEntity<Pizza> update(
             @PathVariable int idPizza,
-            @RequestBody PizzaEntity pizza){
+            @RequestBody Pizza pizza){
 
         return ResponseEntity.ok(this.pizzaService.update(idPizza, pizza));
     }
